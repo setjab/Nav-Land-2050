@@ -1,24 +1,188 @@
 body {
-  margin: 0;
-  padding: 0;
-  background-color: black;
-  color: white;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
-  overflow: hidden;
+  margin: 0;
 }
 
-.loading h1 {
+.object-hover {
+  cursor: pointer;
+}
+
+.loading {
   position: absolute;
-  top: 20px;
-  text-align: center;
-  color: #ffd700;
-  z-index: 1;
+  inset: 0;
+  background: #2d2826;
 }
 
-canvas {
-  display: block;
+.loading p {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 60dvmin;
+  height: 60dvmin;
+}
+
+.loading .letter {
+  position: absolute;
+  color: #fed;
+  font: bold italic 5dvmin/1 georgia;
+  text-transform: uppercase;
+  -webkit-text-stroke: .033em #2f2a2e;
+  animation:
+    letter-wave
+      1s calc(var(--i) * 200ms)
+      steps(3) infinite,
+    letter-wiggle
+      .6s calc(var(--i) * -100ms)
+      steps(1) infinite;
+}
+
+@keyframes letter-wave {
+  50% {
+    scale: 1.66;
+  }
+}
+
+@keyframes letter-wiggle {
+  from, to {
+    rotate: 0;
+  }
+  20% {
+    rotate: -15deg;
+  }
+  40% {
+    rotate: 10deg;
+  }
+  60% {
+    rotate: -13deg;
+  }
+  80% {
+    rotate: 14deg;
+  }
+}
+
+:nth-child(1 of .letter) {
+  top: 26%;
+  left: 4%;
+}
+
+:nth-child(2 of .letter) {
+  top: 30%;
+  left: 20%;
+}
+
+:nth-child(3 of .letter) {
+  top: 41%;
+  left: 39%;
+}
+
+:nth-child(4 of .letter) {
+  top: 50%;
+  left: 48%;
+}
+
+:nth-child(5 of .letter) {
+  top: 49%;
+  left: 64%;
+}
+
+:nth-child(6 of .letter) {
+  top: 57%;
+  left: 82%;
+}
+
+:nth-child(7 of .letter) {
+  top: 52%;
+  left: 91%;
+}
+
+:nth-child(1 of .letter) { --i: 0; }
+:nth-child(2 of .letter) { --i: 1; }
+:nth-child(3 of .letter) { --i: 2; }
+:nth-child(4 of .letter) { --i: 3; }
+:nth-child(5 of .letter) { --i: 4; }
+:nth-child(6 of .letter) { --i: 5; }
+:nth-child(7 of .letter) { --i: 6; }
+
+.loading img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 60dvmin;
+  vertical-align: middle;
+}
+
+.loaded .loading {
+  display: none;
+}
+
+.log {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  translate: 0 calc(100% * var(--i) * -1);
+  background: black;
+  color: white;
+  font-style: normal;
+  font-family: monospace;
+  font-size: calc(.8em + pow(var(--i), 2) * .001em);
+  padding: .4em;
+  pointer-events: none;
+  animation:
+    disappear
+      var(--fade-duration)
+      var(--duration)
+      forwards 1;
+}
+
+@keyframes disappear {
+  to {
+    opacity: 0;
+  }
+}
+
+.log em {
+  color: cyan;
+  margin-right: .5em;
+}
+
+:nth-child(1 of .log) { --i: 0; }
+:nth-child(2 of .log) { --i: 1; }
+:nth-child(3 of .log) { --i: 2; }
+:nth-child(4 of .log) { --i: 3; }
+:nth-child(5 of .log) { --i: 4; }
+:nth-child(6 of .log) { --i: 5; }
+:nth-child(7 of .log) { --i: 6; }
+:nth-child(8 of .log) { --i: 7; }
+:nth-child(9 of .log) { --i: 8; }
+:nth-child(10 of .log) { --i: 9; }
+:nth-child(11 of .log) { --i: 10; }
+:nth-child(12 of .log) { --i: 11; }
+:nth-child(13 of .log) { --i: 12; }
+:nth-child(14 of .log) { --i: 13; }
+:nth-child(15 of .log) { --i: 14; }
+:nth-child(16 of .log) { --i: 15; }
+:nth-child(17 of .log) { --i: 16; }
+:nth-child(18 of .log) { --i: 17; }
+:nth-child(19 of .log) { --i: 18; }
+:nth-child(20 of .log) { --i: 19; }
+
+.css-scene {
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+}
+
+.css-scene__car-label {
+  font-size: .15dvmin;
+  font-family: monospace;
+  padding: .15em .15em 0;
+  color: yellow;
+  background: #000b;
+}
+
+.css-scene__car-label span {
+  color: lime;
 }
