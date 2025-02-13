@@ -9,11 +9,10 @@ camera.position.z = 5;
 
 const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("scene") });
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
 
-// Legg til en kube
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0xffd700 });
+// Legg til en kube (BoxGeometry)
+const geometry = new THREE.BoxGeometry(2, 2, 2); // Sikre kubeform
+const material = new THREE.MeshBasicMaterial({ color: 0xffd700 }); // Fargen er gul
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
